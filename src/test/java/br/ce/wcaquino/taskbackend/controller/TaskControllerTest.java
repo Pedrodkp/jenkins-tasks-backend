@@ -30,7 +30,6 @@ public class TaskControllerTest {
 	@Test
 	public void naoDeveSalvarTarefaSemDescricao() {
 		Task todo = new Task();
-//		todo.setTask("Descricao");
 		todo.setDueDate(LocalDate.now());
 		try {
 			controller.save(todo);
@@ -44,7 +43,6 @@ public class TaskControllerTest {
 	public void naoDeveSalvarTarefaSemData() {
 		Task todo = new Task();
 		todo.setTask("Descricao");
-//		todo.setDueDate(LocalDate.now());
 		try {
 			controller.save(todo);
 			Assert.fail("Não era pra chegar aqui!");
@@ -56,7 +54,7 @@ public class TaskControllerTest {
 	@Test
 	public void naoDeveSalvarTarefaComDataPassada() {
 		Task todo = new Task();
-		todo.setTask("Descricao");
+		//todo.setTask("Descricao");
 		todo.setDueDate(LocalDate.of(2010, 01, 01));
 		try {
 			controller.save(todo);
