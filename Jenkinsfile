@@ -51,5 +51,13 @@ pipeline {
                 }
             }
         }
+        stage ('Functional Tests') {
+            steps {
+                dir('functional-test') {
+                    git 'git@github.com:Pedrodkp/jenkins-tasks-functional-test.git'
+                    sh 'mvn test'
+                }
+            }
+        }
     }
 }
