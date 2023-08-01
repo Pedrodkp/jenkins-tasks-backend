@@ -42,5 +42,14 @@ pipeline {
                 }
             }
         }
+        stage ('Deploy Frontend AllSteps') {
+            steps {
+                dir('frontend') {
+                    git 'git@github.com:Pedrodkp/jenkins-tasks-frontend.git'
+                    sh 'mvn clean package -DskipTests=true'
+                    deploy adapters: [tomcat8(credentialsId: 'TomcatLogin', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks', war: 'target/tasks.war'
+                }
+            }
+        }
     }
 }
