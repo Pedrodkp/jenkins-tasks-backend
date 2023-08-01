@@ -36,8 +36,10 @@ pipeline {
         }
         stage ('Tests API') {
             steps {
-                git 'git@github.com:Pedrodkp/jenkins-tasks-api-test.git'
-                sh 'mvn test'
+                dir('api-test') {
+                    git 'git@github.com:Pedrodkp/jenkins-tasks-api-test.git'
+                    sh 'mvn test'
+                }
             }
         }
     }
