@@ -59,5 +59,10 @@ pipeline {
                 }
             }
         }
+        stage ('Health Check') {
+            steps {
+                sh 'curl -s -o /dev/null -w "%{http_code}" http://localhost:8001/tasks/'
+            }
+        }
     }
 }
